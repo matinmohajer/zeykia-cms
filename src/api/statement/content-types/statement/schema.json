@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "statements",
+  "info": {
+    "singularName": "statement",
+    "pluralName": "statements",
+    "displayName": "Statement",
+    "description": "Artisan quotes and video statements shown on /statements and /statements/[id]"
+  },
+  "options": { "draftAndPublish": true },
+  "pluginOptions": { "i18n": { "localized": true } },
+  "attributes": {
+    "theme": {
+      "type": "enumeration",
+      "enum": ["Craftsmanship", "Artistry", "Innovation"],
+      "required": true
+    },
+    "text": {
+      "type": "richtext",
+      "required": true,
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "author": {
+      "type": "string",
+      "pluginOptions": { "i18n": { "localized": true } }
+    },
+    "videoThumbnail": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "videoUrl": {
+      "type": "string"
+    },
+    "transcript": {
+      "type": "json",
+      "pluginOptions": { "i18n": { "localized": true } }
+    }
+  }
+}

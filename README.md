@@ -1,61 +1,105 @@
-# 🚀 Getting started with Strapi
+# Zeykia CMS
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+Strapi v5 CMS for a multilingual Next.js 15 website with support for English (`en`), Persian (`fa`), and Arabic (`ar`).
 
-### `develop`
+## 🚀 Quick Start
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+### Prerequisites
 
-```
+- Node.js LTS (v20.x or v22.x)
+- npm or yarn
+
+### Installation
+
+```bash
+# Navigate to project directory
+cd zeykia-cms
+
+# Install dependencies (already done if created with --quickstart)
+npm install
+
+# Create .env file (see SETUP.md for template)
+cp .env.example .env
+# Edit .env and add your secrets
+
+# Start development server
 npm run develop
-# or
-yarn develop
 ```
 
-### `start`
+Visit `http://localhost:1337/admin` to create your first admin user.
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+### Production Build
 
-```
-npm run start
-# or
-yarn start
-```
-
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
+```bash
+# Build admin panel
 npm run build
-# or
-yarn build
+
+# Start production server
+npm run start
 ```
 
-## ⚙️ Deployment
+## 📋 Project Overview
 
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+This CMS provides:
+
+- **5 Content Types**: Product, Collection, Color, Page, Statement
+- **Multilingual Support**: i18n with en, fa, ar locales
+- **REST API**: Read-only API tokens for frontend access
+- **Media Management**: Local uploads (S3/R2 configurable for production)
+- **CORS Configured**: Ready for Next.js frontend integration
+
+## 📚 Documentation
+
+See **[SETUP.md](./SETUP.md)** for complete setup instructions including:
+
+- Environment variables
+- Content type definitions
+- i18n configuration
+- API token setup
+- Database configuration (SQLite/PostgreSQL)
+- Media upload setup
+- Smoke tests with curl examples
+
+## 🎯 Content Types
+
+1. **Product** - Product listings and detail pages
+2. **Collection** - Marketing collections and featured collections
+3. **Color** - Color library with stories and inspiration
+4. **Page** - CMS-driven pages (About, Export, etc.)
+5. **Statement** - Brand statements with themes
+
+All content types support i18n with localized fields.
+
+## 🔐 Security
+
+- Read-only API tokens for frontend
+- Admin panel restricted to authenticated users
+- No public write/update/delete endpoints
+- CORS configured for specific origins
+
+## 🌐 API Endpoints
+
+All endpoints follow the pattern:
 
 ```
-yarn strapi deploy
+GET /api/{content-type}?locale={locale}&populate=*
 ```
 
-## 📚 Learn more
+Example:
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+```bash
+curl -X GET "http://localhost:1337/api/products?locale=en&populate=*" \
+  -H "Authorization: Bearer YOUR_API_TOKEN"
+```
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+See [SETUP.md](./SETUP.md) for complete API examples.
 
-## ✨ Community
+## 📖 Learn More
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+- [Strapi Documentation](https://docs.strapi.io)
+- [Strapi v5 Migration Guide](https://docs.strapi.io/dev-docs/migration/v4-to-v5)
+- [Strapi i18n Guide](https://docs.strapi.io/user-docs/settings/internationalization)
 
 ---
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+<sub>Built with Strapi v5.33.1</sub>
