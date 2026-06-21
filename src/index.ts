@@ -342,7 +342,7 @@ async function seed(strapi: Core.Strapi) {
 export default {
   register() {},
 
-  async bootstrap({ strapi }: { strapi: Core.Strapi }) {
-    await seed(strapi);
+  bootstrap({ strapi }: { strapi: Core.Strapi }) {
+    seed(strapi).catch((err) => strapi.log.error('[seed] Failed:', err));
   },
 };
